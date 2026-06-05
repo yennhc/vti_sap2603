@@ -1,0 +1,142 @@
+VIM CHEAT SHEET (SYSADMIN – A4)
+
+⸻
+
+1. MODES
+	•	Normal: Default (ESC)
+	•	Insert: i / a / o
+	•	Command: :
+
+⸻
+
+2. SAVE & EXIT
+
+:w      Save
+:q      Quit
+:q!     Quit بدون save
+:wq     Save & quit
+ZZ      Save & quit (fast)
+
+⸻
+
+3. INSERT MODE
+
+i       Insert before cursor
+a       Insert after cursor
+o       New line below
+O       New line above
+
+ESC     Back to Normal
+
+⸻
+
+4. NAVIGATION
+
+h j k l     ← ↓ ↑ →
+0           Start of line
+$           End of line
+gg          Top of file
+G           End of file
+:10         Go to line 10
+
+⸻
+
+5. DELETE
+
+x           Delete char
+dd          Delete line
+5dd         Delete 5 lines
+dw          Delete word
+
+⸻
+
+6. COPY & PASTE
+
+yy          Copy line
+5yy         Copy 5 lines
+p           Paste below
+P           Paste above
+
+⸻
+
+7. UNDO / REDO
+
+u           Undo
+Ctrl + r    Redo
+
+⸻
+
+8. SEARCH
+
+/word       Search down
+?word       Search up
+n           Next
+N           Previous
+
+⸻
+
+9. REPLACE
+
+:%s/old/new/g        Replace all
+:%s/old/new/gc       Confirm each
+
+⸻
+
+10. VISUAL MODE
+
+v           Select char
+V           Select line
+Ctrl + v    Block select
+
+⸻
+
+11. FILE OPERATIONS
+
+:e file     Open file
+:w file     Save as
+:r file     Insert file
+
+⸻
+
+12. SYSTEM CLIPBOARD
+
+“+y        Copy to clipboard
+“+p        Paste from clipboard
+
+⸻
+
+13. CONFIG (~/.vimrc)
+
+set number
+set relativenumber
+syntax on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+⸻
+
+14. QUICK SYSADMIN FLOW
+
+vim /etc/ssh/sshd_config
+
+/PermitRootLogin
+i  → edit
+ESC
+:wq
+
+⸻
+
+15. POWER TIPS
+
+.           Repeat last command
+	•	
+
+      Search word under cursor
+
+
+
+:%!sort     Sort file
+:%!uniq     Remove duplicates
+
+⸻

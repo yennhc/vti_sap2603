@@ -1,0 +1,48 @@
+---
+1. 📂 Mở / Thoát
+nano file.txt          # Mở / tạo file
+nano +10 file.txt      # Mở tại dòng 10
+Ctrl + X               # Thoát
+Y                      # Save
+N                      # Không save
+
+2. 💾 Lưu / Ghi file
+Ctrl + O               # Write (save)
+Enter                  # Xác nhận tên file
+Ctrl + X               # Thoát sau khi save
+
+3. ✂️ Copy / Cut / Paste
+Ctrl + K               # Cut dòng hiện tại
+Ctrl + U               # Paste
+
+Alt + A                # Bắt đầu chọn (mark)
+→ / ←                  # Di chuyển để chọn
+Ctrl + K               # Cut vùng đã chọn
+Alt + 6                # Copy vùng đã chọn
+
+4. 🔍 Tìm kiếm / Thay thế
+Ctrl + W               # Tìm
+Ctrl + \               # Replace (tìm & thay thế)
+Alt + W                # Tìm tiếp (next)
+
+5. 🧭 Di chuyển nhanh
+Ctrl + A               # Đầu dòng
+Ctrl + E               # Cuối dòng
+Ctrl + Y               # Page Up
+Ctrl + V               # Page Down
+Ctrl + _               # Nhảy đến dòng (Go to line)
+
+6. 🔧 Undo / Redo
+Alt + U                # Undo
+Alt + E                # Redo
+
+7. 🧹 Xóa / Chỉnh sửa nhanh
+Ctrl + D               # Xóa ký tự tại con trỏ
+Ctrl + H               # Backspace
+Ctrl + K               # Xóa dòng
+Ctrl + U               # Paste lại
+
+8. 📌 Hiển thị thông tin
+Ctrl + C               # Hiển thị vị trí con trỏ
+Ctrl + G               # Help
+
