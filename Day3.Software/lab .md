@@ -66,13 +66,14 @@ sudo apt purge nginx
 Tải package htop
 
 ```bash
-wget http://archive.ubuntu.com/ubuntu/pool/universe/h/htop/htop_3.0.5-7_amd64.deb
+sudo apt purge htop
+apt download htop
 ```
 
 Cài bằng dpkg
 
 ```bash
-sudo dpkg -i htop_3.0.5-7_amd64.deb
+sudo dpkg -i htop_*.deb
 ```
 
 Kiểm tra
