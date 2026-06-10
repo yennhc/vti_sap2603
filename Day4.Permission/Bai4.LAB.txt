@@ -1,0 +1,12 @@
+Bạn là một quản trị hệ thống trong công ty về phát triển phần mềm. Công ty của bạn đang phát triển một dự án cho khách hàng. Project manager muốn build một server cho dự án này. Với môi trường làm việc cho 3 nhóm người dùng là dev, test, admin. 
+
+Bạn cần tạo user, group cho 3 nhóm người dùng này.
+Bạn cần tạo cấu trúc project như sau và phân quyền thích hợp
+project/dev (cho phép admin và dev được đọc dev)
+project/test (cho phép admin và dev được đọc test)
+project/admin (Dev + Test không có quyền truy cập ngoại trừ admin)
+
+Gợi ý: 
+Tạo user: dev1, test1, admin1
+Tạo group: dev, test, admin
+Phân quyền theo đúng yêu cầu
