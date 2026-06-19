@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0}
+  @keyframes dashFlow{to{stroke-dashoffset:-32}}
+  @keyframes pulseDot{0%,100%{opacity:.3}50%{opacity:1}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+</style>
+</helmet>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="sym-switch" viewBox="0 0 140 56">
+    <rect x="3" y="4" width="134" height="48" rx="8" fill="#ffffff" stroke="#334155" stroke-width="2.5"/>
+    <circle cx="18" cy="16" r="2.6" fill="#22c55e"/>
+    <circle cx="29" cy="16" r="2.6" fill="#22c55e"/>
+    <circle cx="40" cy="16" r="2.6" fill="#f59e0b"/>
+    <g fill="#cbd5e1">
+      <rect x="14" y="32" width="12" height="12" rx="2"/>
+      <rect x="32" y="32" width="12" height="12" rx="2"/>
+      <rect x="50" y="32" width="12" height="12" rx="2"/>
+      <rect x="68" y="32" width="12" height="12" rx="2"/>
+      <rect x="86" y="32" width="12" height="12" rx="2"/>
+      <rect x="104" y="32" width="12" height="12" rx="2"/>
+    </g>
+  </symbol>
+  <symbol id="sym-router" viewBox="0 0 96 96">
+    <circle cx="48" cy="48" r="43" fill="#ffffff" stroke="#334155" stroke-width="2.5"/>
+    <g stroke="#334155" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="22" y1="40" x2="74" y2="40"/>
+      <polyline points="66,32 75,40 66,48"/>
+      <line x1="74" y1="58" x2="22" y2="58"/>
+      <polyline points="30,50 21,58 30,66"/>
+    </g>
+  </symbol>
+  <symbol id="sym-laptop" viewBox="0 0 96 72">
+    <rect x="20" y="9" width="56" height="38" rx="3" fill="#ffffff" stroke="#334155" stroke-width="2.5"/>
+    <rect x="26" y="15" width="44" height="26" rx="1.5" fill="#e2e8f0"/>
+    <path d="M10 58 L86 58 L80 49 L16 49 Z" fill="#ffffff" stroke="#334155" stroke-width="2.5" stroke-linejoin="round"/>
+  </symbol>
+</defs></svg>
+
+<div style="min-height:100vh;background:radial-gradient(1200px 620px at 50% -8%, #e0e7ff, #eef2f7 38%, #f6f8fb);font-family:'IBM Plex Sans',sans-serif;color:#0f172a;padding:36px 20px 64px">
+  <div style="max-width:1080px;margin:0 auto">
+
+    <!-- HEADER -->
+    <div style="position:relative;overflow:hidden;border-radius:26px;padding:44px 44px 40px;background:linear-gradient(135deg,#0b1220 0%,#15233c 55%,#1d3a64 100%);box-shadow:0 30px 60px -28px rgba(15,23,42,.6)">
+      <div style="position:absolute;inset:0;opacity:.5;background-image:linear-gradient(rgba(99,160,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(99,160,255,.06) 1px,transparent 1px);background-size:34px 34px"></div>
+      <div style="position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle, rgba(56,189,248,.22), transparent 70%)"></div>
+      <div style="position:relative">
+        <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 13px;border-radius:999px;background:rgba(56,189,248,.14);border:1px solid rgba(56,189,248,.35);color:#7dd3fc;font:600 12px 'JetBrains Mono',monospace;letter-spacing:.06em">
+          <span style="width:7px;height:7px;border-radius:50%;background:#38bdf8;box-shadow:0 0 10px #38bdf8"></span>CISCO PACKET TRACER
+        </div>
+        <h1 style="margin:18px 0 0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:46px;line-height:1.05;color:#fff;letter-spacing:-.02em">LAB: VTP + Router + DHCP</h1>
+        <p style="margin:14px 0 0;max-width:620px;font-size:16.5px;line-height:1.55;color:#9fb3cc">Đồng bộ VLAN qua VTP, định tuyến Inter‑VLAN bằng Router‑on‑a‑Stick, và cấp phát IP tự động bằng DHCP cho từng VLAN.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px">
+          <span style="padding:7px 14px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#cbd5e1;font:600 13px 'IBM Plex Sans'">VTP Domain · LAB</span>
+          <span style="padding:7px 14px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#cbd5e1;font:600 13px 'IBM Plex Sans'">VLAN 10 · SALES</span>
+          <span style="padding:7px 14px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#cbd5e1;font:600 13px 'IBM Plex Sans'">VLAN 20 · IT</span>
+          <span style="padding:7px 14px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#cbd5e1;font:600 13px 'IBM Plex Sans'">Router 2911 · DHCP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OBJECTIVES -->
+    <div style="margin-top:40px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <span style="font-size:22px">🎯</span>
+        <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;letter-spacing:-.01em">Mục tiêu bài lab</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
+        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:22px;box-shadow:0 8px 24px -16px rgba(15,23,42,.3)">
+          <div style="width:40px;height:40px;border-radius:12px;background:#eef2ff;color:#4f46e5;display:flex;align-items:center;justify-content:center;font:700 18px 'Space Grotesk';margin-bottom:14px">01</div>
+          <div style="font-weight:600;font-size:16px;margin-bottom:6px">VTP đồng bộ VLAN</div>
+          <div style="font-size:14px;line-height:1.5;color:#64748b">SW1 (Server) tạo VLAN, SW2 (Client) tự động nhận về qua đường trunk.</div>
+        </div>
+        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:22px;box-shadow:0 8px 24px -16px rgba(15,23,42,.3)">
+          <div style="width:40px;height:40px;border-radius:12px;background:#ecfeff;color:#0891b2;display:flex;align-items:center;justify-content:center;font:700 18px 'Space Grotesk';margin-bottom:14px">02</div>
+          <div style="font-weight:600;font-size:16px;margin-bottom:6px">Router cấp DHCP</div>
+          <div style="font-size:14px;line-height:1.5;color:#64748b">Router làm DHCP server, cấp dải IP riêng cho từng VLAN.</div>
+        </div>
+        <div style="background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:22px;box-shadow:0 8px 24px -16px rgba(15,23,42,.3)">
+          <div style="width:40px;height:40px;border-radius:12px;background:#fef3c7;color:#b45309;display:flex;align-items:center;justify-content:center;font:700 18px 'Space Grotesk';margin-bottom:14px">03</div>
+          <div style="font-weight:600;font-size:16px;margin-bottom:6px">Laptop nhận IP tự động</div>
+          <div style="font-size:14px;line-height:1.5;color:#64748b">Máy ở mỗi VLAN nhận đúng dải IP và ping được nhau qua Inter‑VLAN.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOPOLOGY -->
+    <div style="margin-top:46px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <span style="font-size:22px">🧱</span>
+        <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;letter-spacing:-.01em">Sơ đồ mạng (Topology)</h2>
+      </div>
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:22px;padding:24px 20px;box-shadow:0 16px 40px -24px rgba(15,23,42,.35);background-image:radial-gradient(#eef2f7 1px,transparent 1px);background-size:22px 22px">
+        <svg viewBox="0 0 920 620" width="100%" style="display:block;font-family:'IBM Plex Sans',sans-serif">
+          <line x1="228" y1="278" x2="694" y2="278" stroke="#7c3aed" stroke-width="3.5" stroke-dasharray="3 7" stroke-linecap="round" style="animation:dashFlow 1.1s linear infinite"/>
+          <line x1="150" y1="306" x2="436" y2="476" stroke="#7c3aed" stroke-width="3.5" stroke-dasharray="3 7" stroke-linecap="round" style="animation:dashFlow 1.1s linear infinite"/>
+          <line x1="158" y1="112" x2="158" y2="250" stroke="#2563eb" stroke-width="3"/>
+          <line x1="764" y1="112" x2="764" y2="250" stroke="#f59e0b" stroke-width="3"/>
+          <circle r="5" fill="#a78bfa"><animateMotion dur="2.4s" repeatCount="indefinite" path="M228,278 L694,278"/></circle>
+          <circle r="4" fill="#38bdf8"><animateMotion dur="2.8s" repeatCount="indefinite" path="M436,476 L150,306"/></circle>
+
+          <use href="#sym-laptop" x="110" y="40" width="96" height="72"/>
+          <use href="#sym-laptop" x="716" y="40" width="96" height="72"/>
+          <use href="#sym-switch" x="88" y="250" width="140" height="56"/>
+          <use href="#sym-switch" x="694" y="250" width="140" height="56"/>
+          <use href="#sym-router" x="412" y="470" width="96" height="96"/>
+
+          <g><rect x="106" y="16" width="104" height="22" rx="11" fill="#2563eb"/><text x="158" y="31" text-anchor="middle" fill="#fff" font-size="11.5" font-weight="600">Laptop1 · VLAN10</text></g>
+          <g><rect x="712" y="16" width="104" height="22" rx="11" fill="#f59e0b"/><text x="764" y="31" text-anchor="middle" fill="#fff" font-size="11.5" font-weight="600">Laptop2 · VLAN20</text></g>
+
+          <g><rect x="166" y="170" width="62" height="20" rx="6" fill="#eff6ff" stroke="#bfdbfe"/><text x="197" y="184" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="600">fa0/2</text></g>
+          <g><rect x="772" y="170" width="62" height="20" rx="6" fill="#fffbeb" stroke="#fde68a"/><text x="803" y="184" text-anchor="middle" fill="#b45309" font-size="11" font-weight="600">fa0/2</text></g>
+
+          <g><rect x="74" y="318" width="168" height="26" rx="8" fill="#0f172a"/><text x="158" y="335" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="600">SW1 · VTP Server</text></g>
+          <g><rect x="680" y="318" width="168" height="26" rx="8" fill="#334155"/><text x="764" y="335" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="600">SW2 · VTP Client</text></g>
+
+          <g><rect x="404" y="256" width="114" height="22" rx="7" fill="#f5f3ff" stroke="#ddd6fe"/><text x="461" y="271" text-anchor="middle" fill="#7c3aed" font-size="11.5" font-weight="600">Trunk · fa0/1</text></g>
+          <g><rect x="226" y="376" width="120" height="22" rx="7" fill="#f5f3ff" stroke="#ddd6fe"/><text x="286" y="391" text-anchor="middle" fill="#7c3aed" font-size="11.5" font-weight="600">Trunk · fa0/24</text></g>
+
+          <g><rect x="380" y="576" width="160" height="26" rx="8" fill="#0e7490"/><text x="460" y="593" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">R1 · DHCP + Inter‑VLAN</text></g>
+
+          <g>
+            <rect x="556" y="452" width="246" height="92" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+            <text x="572" y="474" fill="#475569" font-size="11.5" font-weight="700" letter-spacing=".04em">ROUTER‑ON‑A‑STICK</text>
+            <circle cx="576" cy="496" r="4" fill="#2563eb"/>
+            <text x="588" y="500" fill="#1e293b" font-size="12.5" font-family="'JetBrains Mono',monospace">g0/0.10 → 192.168.10.1</text>
+            <circle cx="576" cy="522" r="4" fill="#f59e0b"/>
+            <text x="588" y="526" fill="#1e293b" font-size="12.5" font-family="'JetBrains Mono',monospace">g0/0.20 → 192.168.20.1</text>
+          </g>
+        </svg>
+
+        <div style="display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-top:8px;padding-top:18px;border-top:1px solid #eef2f7">
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#475569"><span style="width:18px;height:4px;border-radius:2px;background:#2563eb;display:inline-block"></span>VLAN 10 (SALES)</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#475569"><span style="width:18px;height:4px;border-radius:2px;background:#f59e0b;display:inline-block"></span>VLAN 20 (IT)</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#475569"><span style="width:18px;height:4px;border-radius:2px;background:#7c3aed;display:inline-block;background-image:repeating-linear-gradient(90deg,#7c3aed 0 4px,transparent 4px 8px)"></span>Trunk 802.1Q</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEPS HEADER -->
+    <div style="margin-top:52px;margin-bottom:8px">
+      <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;letter-spacing:-.02em">Các bước cấu hình</h2>
+      <p style="margin:8px 0 0;color:#64748b;font-size:15px">Mỗi bước gồm sơ đồ minh hoạ và đoạn lệnh cấu hình tương ứng.</p>
+    </div>
+
+    <!-- ===== STEP 1 ===== -->
+    <section style="margin-top:28px;background:#fff;border:1px solid #e2e8f0;border-radius:22px;padding:28px;box-shadow:0 14px 36px -26px rgba(15,23,42,.35);animation:fadeUp .5s ease both">
+      <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:22px">
+        <div style="flex:none;width:46px;height:46px;border-radius:14px;background:#4f46e5;color:#fff;display:flex;align-items:center;justify-content:center;font:700 20px 'Space Grotesk'">1</div>
+        <div>
+          <h3 style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Tạo VLAN trên VTP Server (SW1)</h3>
+          <p style="margin:5px 0 0;color:#64748b;font-size:14px">SW1 ở chế độ <b>server</b> tạo VLAN, SW2 ở chế độ <b>client</b> sẽ tự động đồng bộ.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:start">
+        <div style="background:#f8fafc;border:1px solid #eef2f7;border-radius:16px;padding:14px">
+          <svg viewBox="0 0 380 220" width="100%" style="display:block;font-family:'IBM Plex Sans',sans-serif">
+            <line x1="146" y1="120" x2="234" y2="120" stroke="#7c3aed" stroke-width="3" stroke-dasharray="3 6" stroke-linecap="round" style="animation:dashFlow 1.1s linear infinite"/>
+            <rect x="92" y="74" width="54" height="17" rx="8" fill="#2563eb"><animateMotion dur="2.6s" repeatCount="indefinite" path="M0,0 L98,0"/></rect>
+            <rect x="92" y="74" width="54" height="17" rx="8" fill="#f59e0b" opacity=".9"><animateMotion dur="2.6s" begin="1.3s" repeatCount="indefinite" path="M0,0 L98,0"/></rect>
+            <use href="#sym-switch" x="26" y="100" width="120" height="48"/>
+            <use href="#sym-switch" x="234" y="100" width="120" height="48"/>
+            <text x="190" y="42" text-anchor="middle" fill="#475569" font-size="12" font-weight="700">Domain: LAB</text>
+            <text x="190" y="64" text-anchor="middle" fill="#7c3aed" font-size="11">VLAN sync →</text>
+            <g><rect x="40" y="160" width="92" height="22" rx="7" fill="#0f172a"/><text x="86" y="175" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">SW1 · Server</text></g>
+            <g><rect x="248" y="160" width="92" height="22" rx="7" fill="#334155"/><text x="294" y="175" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">SW2 · Client</text></g>
+          </svg>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div data-term style="border-radius:14px;overflow:hidden;border:1px solid #1e293b;box-shadow:0 16px 32px -20px rgba(15,23,42,.5)">
+            <div style="display:flex;align-items:center;gap:7px;padding:10px 14px;background:#111c30;border-bottom:1px solid #1e293b">
+              <span style="width:10px;height:10px;border-radius:50%;background:#ef4444"></span><span style="width:10px;height:10px;border-radius:50%;background:#f59e0b"></span><span style="width:10px;height:10px;border-radius:50%;background:#22c55e"></span>
+              <span style="margin-left:8px;font:600 12px 'JetBrains Mono',monospace;color:#94a3b8">SW1 — VTP Server</span>
+              <button onClick="{{ copyFrom }}" style="margin-left:auto;font:600 11px 'IBM Plex Sans';color:#94a3b8;background:#1e293b;border:none;padding:5px 11px;border-radius:7px;cursor:pointer">Copy</button>
+            </div>
+            <div style="margin:0;padding:16px 18px;font:500 13.5px/1.7 'JetBrains Mono',monospace;color:#e2e8f0;overflow-x:auto;background:#0b1220">
+              <div><span style="color:#5eead4">conf</span> t</div>
+              <div><span style="color:#5eead4">vtp domain</span> <span style="color:#93c5fd">LAB</span></div>
+              <div><span style="color:#5eead4">vtp mode</span> server</div>
+              <div><span style="color:#5eead4">vlan</span> <span style="color:#fcd34d">10</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">name</span> <span style="color:#93c5fd">SALES</span></div>
+              <div><span style="color:#5eead4">vlan</span> <span style="color:#fcd34d">20</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">name</span> <span style="color:#93c5fd">IT</span></div>
+            </div>
+          </div>
+          <div data-term style="border-radius:14px;overflow:hidden;border:1px solid #1e293b;box-shadow:0 16px 32px -20px rgba(15,23,42,.5)">
+            <div style="display:flex;align-items:center;gap:7px;padding:10px 14px;background:#111c30;border-bottom:1px solid #1e293b">
+              <span style="width:10px;height:10px;border-radius:50%;background:#ef4444"></span><span style="width:10px;height:10px;border-radius:50%;background:#f59e0b"></span><span style="width:10px;height:10px;border-radius:50%;background:#22c55e"></span>
+              <span style="margin-left:8px;font:600 12px 'JetBrains Mono',monospace;color:#94a3b8">SW2 — VTP Client</span>
+              <button onClick="{{ copyFrom }}" style="margin-left:auto;font:600 11px 'IBM Plex Sans';color:#94a3b8;background:#1e293b;border:none;padding:5px 11px;border-radius:7px;cursor:pointer">Copy</button>
+            </div>
+            <div style="margin:0;padding:16px 18px;font:500 13.5px/1.7 'JetBrains Mono',monospace;color:#e2e8f0;overflow-x:auto;background:#0b1220">
+              <div><span style="color:#5eead4">conf</span> t</div>
+              <div><span style="color:#5eead4">vtp domain</span> <span style="color:#93c5fd">LAB</span></div>
+              <div><span style="color:#5eead4">vtp mode</span> client</div>
+            </div>
+          </div>
+          <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;gap:10px;padding:13px 15px;border-radius:12px;background:#eff6ff;border:1px solid #dbeafe">
+              <span style="font-size:16px">💡</span>
+              <p style="margin:0;font-size:13.5px;line-height:1.5;color:#1e40af">SW2 phải cùng <b>VTP domain</b> (LAB) thì mới nhận được VLAN từ Server. Không cần tạo VLAN thủ công trên SW2.</p>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STEP 2 ===== -->
+    <section style="margin-top:24px;background:#fff;border:1px solid #e2e8f0;border-radius:22px;padding:28px;box-shadow:0 14px 36px -26px rgba(15,23,42,.35);animation:fadeUp .5s ease both">
+      <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:22px">
+        <div style="flex:none;width:46px;height:46px;border-radius:14px;background:#4f46e5;color:#fff;display:flex;align-items:center;justify-content:center;font:700 20px 'Space Grotesk'">2</div>
+        <div>
+          <h3 style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Cấu hình Trunk</h3>
+          <p style="margin:5px 0 0;color:#64748b;font-size:14px">Bật trunk giữa SW1↔SW2 (fa0/1) và SW1↔Router (fa0/24) để truyền nhiều VLAN.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:start">
+        <div style="background:#f8fafc;border:1px solid #eef2f7;border-radius:16px;padding:14px">
+          <svg viewBox="0 0 380 230" width="100%" style="display:block;font-family:'IBM Plex Sans',sans-serif">
+            <line x1="146" y1="58" x2="234" y2="58" stroke="#7c3aed" stroke-width="4" stroke-dasharray="3 6" stroke-linecap="round" style="animation:dashFlow 1.1s linear infinite"/>
+            <line x1="86" y1="82" x2="190" y2="150" stroke="#7c3aed" stroke-width="4" stroke-dasharray="3 6" stroke-linecap="round" style="animation:dashFlow 1.1s linear infinite"/>
+            <use href="#sym-switch" x="26" y="34" width="120" height="48"/>
+            <use href="#sym-switch" x="234" y="34" width="120" height="48"/>
+            <use href="#sym-router" x="154" y="150" width="72" height="72"/>
+            <g><rect x="150" y="48" width="80" height="20" rx="7" fill="#f5f3ff" stroke="#ddd6fe"/><text x="190" y="62" text-anchor="middle" fill="#7c3aed" font-size="11" font-weight="600">fa0/1</text></g>
+            <g><rect x="70" y="104" width="80" height="20" rx="7" fill="#f5f3ff" stroke="#ddd6fe"/><text x="110" y="118" text-anchor="middle" fill="#7c3aed" font-size="11" font-weight="600">fa0/24</text></g>
+            <text x="86" y="26" text-anchor="middle" fill="#475569" font-size="11" font-weight="600">SW1</text>
+            <text x="294" y="26" text-anchor="middle" fill="#475569" font-size="11" font-weight="600">SW2</text>
+            <text x="190" y="216" text-anchor="middle" fill="#0e7490" font-size="11" font-weight="600">Router R1</text>
+          </svg>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div data-term style="border-radius:14px;overflow:hidden;border:1px solid #1e293b;box-shadow:0 16px 32px -20px rgba(15,23,42,.5)">
+            <div style="display:flex;align-items:center;gap:7px;padding:10px 14px;background:#111c30;border-bottom:1px solid #1e293b">
+              <span style="width:10px;height:10px;border-radius:50%;background:#ef4444"></span><span style="width:10px;height:10px;border-radius:50%;background:#f59e0b"></span><span style="width:10px;height:10px;border-radius:50%;background:#22c55e"></span>
+              <span style="margin-left:8px;font:600 12px 'JetBrains Mono',monospace;color:#94a3b8">SW1 → SW2</span>
+              <button onClick="{{ copyFrom }}" style="margin-left:auto;font:600 11px 'IBM Plex Sans';color:#94a3b8;background:#1e293b;border:none;padding:5px 11px;border-radius:7px;cursor:pointer">Copy</button>
+            </div>
+            <div style="margin:0;padding:16px 18px;font:500 13.5px/1.7 'JetBrains Mono',monospace;color:#e2e8f0;overflow-x:auto;background:#0b1220">
+              <div><span style="color:#5eead4">interface</span> <span style="color:#fcd34d">fa0/1</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">switchport mode</span> trunk</div>
+            </div>
+          </div>
+          <div data-term style="border-radius:14px;overflow:hidden;border:1px solid #1e293b;box-shadow:0 16px 32px -20px rgba(15,23,42,.5)">
+            <div style="display:flex;align-items:center;gap:7px;padding:10px 14px;background:#111c30;border-bottom:1px solid #1e293b">
+              <span style="width:10px;height:10px;border-radius:50%;background:#ef4444"></span><span style="width:10px;height:10px;border-radius:50%;background:#f59e0b"></span><span style="width:10px;height:10px;border-radius:50%;background:#22c55e"></span>
+              <span style="margin-left:8px;font:600 12px 'JetBrains Mono',monospace;color:#94a3b8">SW1 → Router</span>
+              <button onClick="{{ copyFrom }}" style="margin-left:auto;font:600 11px 'IBM Plex Sans';color:#94a3b8;background:#1e293b;border:none;padding:5px 11px;border-radius:7px;cursor:pointer">Copy</button>
+            </div>
+            <div style="margin:0;padding:16px 18px;font:500 13.5px/1.7 'JetBrains Mono',monospace;color:#e2e8f0;overflow-x:auto;background:#0b1220">
+              <div><span style="color:#5eead4">interface</span> <span style="color:#fcd34d">fa0/24</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">switchport mode</span> trunk</div>
+            </div>
+          </div>
+          <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;gap:10px;padding:13px 15px;border-radius:12px;background:#f5f3ff;border:1px solid #e9d5ff">
+              <span style="font-size:16px">💡</span>
+              <p style="margin:0;font-size:13.5px;line-height:1.5;color:#6d28d9">Cổng nối Router phải là <b>trunk</b> để mang được cả VLAN10 và VLAN20 — đây là điều kiện cho Router‑on‑a‑Stick.</p>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STEP 3 ===== -->
+    <section style="margin-top:24px;background:#fff;border:1px solid #e2e8f0;border-radius:22px;padding:28px;box-shadow:0 14px 36px -26px rgba(15,23,42,.35);animation:fadeUp .5s ease both">
+      <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:22px">
+        <div style="flex:none;width:46px;height:46px;border-radius:14px;background:#4f46e5;color:#fff;display:flex;align-items:center;justify-content:center;font:700 20px 'Space Grotesk'">3</div>
+        <div>
+          <h3 style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Gán port cho Laptop</h3>
+          <p style="margin:5px 0 0;color:#64748b;font-size:14px">Cổng fa0/2 của mỗi switch đặt ở chế độ <b>access</b> và gán đúng VLAN.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:start">
+        <div style="background:#f8fafc;border:1px solid #eef2f7;border-radius:16px;padding:14px">
+          <svg viewBox="0 0 380 210" width="100%" style="display:block;font-family:'IBM Plex Sans',sans-serif">
+            <line x1="74" y1="78" x2="74" y2="130" stroke="#2563eb" stroke-width="3"/>
+            <line x1="306" y1="78" x2="306" y2="130" stroke="#f59e0b" stroke-width="3"/>
+            <use href="#sym-laptop" x="44" y="20" width="60" height="46"/>
+            <use href="#sym-laptop" x="276" y="20" width="60" height="46"/>
+            <use href="#sym-switch" x="14" y="130" width="120" height="48"/>
+            <use href="#sym-switch" x="246" y="130" width="120" height="48"/>
+            <g><rect x="44" y="92" width="100" height="20" rx="7" fill="#eff6ff" stroke="#bfdbfe"/><text x="94" y="106" text-anchor="middle" fill="#2563eb" font-size="10.5" font-weight="600">fa0/2 · vlan 10</text></g>
+            <g><rect x="236" y="92" width="100" height="20" rx="7" fill="#fffbeb" stroke="#fde68a"/><text x="286" y="106" text-anchor="middle" fill="#b45309" font-size="10.5" font-weight="600">fa0/2 · vlan 20</text></g>
+            <text x="74" y="196" text-anchor="middle" fill="#475569" font-size="11" font-weight="600">SW1</text>
+            <text x="306" y="196" text-anchor="middle" fill="#475569" font-size="11" font-weight="600">SW2</text>
+          </svg>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div data-term style="border-radius:14px;overflow:hidden;border:1px solid #1e293b;box-shadow:0 16px 32px -20px rgba(15,23,42,.5)">
+            <div style="display:flex;align-items:center;gap:7px;padding:10px 14px;background:#111c30;border-bottom:1px solid #1e293b">
+              <span style="width:10px;height:10px;border-radius:50%;background:#ef4444"></span><span style="width:10px;height:10px;border-radius:50%;background:#f59e0b"></span><span style="width:10px;height:10px;border-radius:50%;background:#22c55e"></span>
+              <span style="margin-left:8px;font:600 12px 'JetBrains Mono',monospace;color:#94a3b8">SW1 · Laptop1 (VLAN10)</span>
+              <button onClick="{{ copyFrom }}" style="margin-left:auto;font:600 11px 'IBM Plex Sans';color:#94a3b8;background:#1e293b;border:none;padding:5px 11px;border-radius:7px;cursor:pointer">Copy</button>
+            </div>
+            <div style="margin:0;padding:16px 18px;font:500 13.5px/1.7 'JetBrains Mono',monospace;color:#e2e8f0;overflow-x:auto;background:#0b1220">
+              <div><span style="color:#5eead4">interface</span> <span style="color:#fcd34d">fa0/2</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">switchport mode</span> access</div>
+              <div style="padding-left:18px"><span style="color:#5eead4">switchport access vlan</span> <span style="color:#fcd34d">10</span></div>
+            </div>
+          </div>
+          <div data-term style="border-radius:14px;overflow:hidden;border:1px solid #1e293b;box-shadow:0 16px 32px -20px rgba(15,23,42,.5)">
+            <div style="display:flex;align-items:center;gap:7px;padding:10px 14px;background:#111c30;border-bottom:1px solid #1e293b">
+              <span style="width:10px;height:10px;border-radius:50%;background:#ef4444"></span><span style="width:10px;height:10px;border-radius:50%;background:#f59e0b"></span><span style="width:10px;height:10px;border-radius:50%;background:#22c55e"></span>
+              <span style="margin-left:8px;font:600 12px 'JetBrains Mono',monospace;color:#94a3b8">SW2 · Laptop2 (VLAN20)</span>
+              <button onClick="{{ copyFrom }}" style="margin-left:auto;font:600 11px 'IBM Plex Sans';color:#94a3b8;background:#1e293b;border:none;padding:5px 11px;border-radius:7px;cursor:pointer">Copy</button>
+            </div>
+            <div style="margin:0;padding:16px 18px;font:500 13.5px/1.7 'JetBrains Mono',monospace;color:#e2e8f0;overflow-x:auto;background:#0b1220">
+              <div><span style="color:#5eead4">interface</span> <span style="color:#fcd34d">fa0/2</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">switchport mode</span> access</div>
+              <div style="padding-left:18px"><span style="color:#5eead4">switchport access vlan</span> <span style="color:#fcd34d">20</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STEP 4 ===== -->
+    <section style="margin-top:24px;background:#fff;border:1px solid #e2e8f0;border-radius:22px;padding:28px;box-shadow:0 14px 36px -26px rgba(15,23,42,.35);animation:fadeUp .5s ease both">
+      <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:22px">
+        <div style="flex:none;width:46px;height:46px;border-radius:14px;background:#0891b2;color:#fff;display:flex;align-items:center;justify-content:center;font:700 20px 'Space Grotesk'">4</div>
+        <div>
+          <h3 style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Cấu hình Router 🚀 (DHCP + Inter‑VLAN)</h3>
+          <p style="margin:5px 0 0;color:#64748b;font-size:14px">Router Cisco 2911 — tạo sub‑interface cho mỗi VLAN, sau đó cấp DHCP.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:start">
+        <div style="background:#f8fafc;border:1px solid #eef2f7;border-radius:16px;padding:14px">
+          <svg viewBox="0 0 380 250" width="100%" style="display:block;font-family:'IBM Plex Sans',sans-serif">
+            <line x1="190" y1="96" x2="90" y2="150" stroke="#2563eb" stroke-width="3"/>
+            <line x1="190" y1="96" x2="290" y2="150" stroke="#f59e0b" stroke-width="3"/>
+            <use href="#sym-router" x="154" y="20" width="72" height="72"/>
+            <g><rect x="120" y="0" width="140" height="20" rx="7" fill="#0e7490"/><text x="190" y="14" text-anchor="middle" fill="#fff" font-size="11" font-weight="600">g0/0 (trunk)</text></g>
+            <g>
+              <rect x="20" y="150" width="140" height="64" rx="12" fill="#eff6ff" stroke="#bfdbfe"/>
+              <text x="90" y="170" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">g0/0.10 · VLAN10</text>
+              <text x="90" y="188" text-anchor="middle" fill="#1e40af" font-size="11" font-family="'JetBrains Mono',monospace">192.168.10.0/24</text>
+              <text x="90" y="204" text-anchor="middle" fill="#3b82f6" font-size="10">DHCP pool VLAN10</text>
+            </g>
+            <g>
+              <rect x="220" y="150" width="140" height="64" rx="12" fill="#fffbeb" stroke="#fde68a"/>
+              <text x="290" y="170" text-anchor="middle" fill="#b45309" font-size="11" font-weight="700">g0/0.20 · VLAN20</text>
+              <text x="290" y="188" text-anchor="middle" fill="#92400e" font-size="11" font-family="'JetBrains Mono',monospace">192.168.20.0/24</text>
+              <text x="290" y="204" text-anchor="middle" fill="#d97706" font-size="10">DHCP pool VLAN20</text>
+            </g>
+            <text x="190" y="240" text-anchor="middle" fill="#475569" font-size="11" font-weight="600">Router‑on‑a‑Stick · 1 cổng vật lý, 2 sub‑interface</text>
+          </svg>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div data-term style="border-radius:14px;overflow:hidden;border:1px solid #1e293b;box-shadow:0 16px 32px -20px rgba(15,23,42,.5)">
+            <div style="display:flex;align-items:center;gap:7px;padding:10px 14px;background:#111c30;border-bottom:1px solid #1e293b">
+              <span style="width:10px;height:10px;border-radius:50%;background:#ef4444"></span><span style="width:10px;height:10px;border-radius:50%;background:#f59e0b"></span><span style="width:10px;height:10px;border-radius:50%;background:#22c55e"></span>
+              <span style="margin-left:8px;font:600 12px 'JetBrains Mono',monospace;color:#94a3b8">R1 — Sub‑interface</span>
+              <button onClick="{{ copyFrom }}" style="margin-left:auto;font:600 11px 'IBM Plex Sans';color:#94a3b8;background:#1e293b;border:none;padding:5px 11px;border-radius:7px;cursor:pointer">Copy</button>
+            </div>
+            <div style="margin:0;padding:16px 18px;font:500 13.5px/1.7 'JetBrains Mono',monospace;color:#e2e8f0;overflow-x:auto;background:#0b1220">
+              <div><span style="color:#5eead4">conf</span> t</div>
+              <div><span style="color:#5eead4">interface</span> <span style="color:#fcd34d">g0/0</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">no shutdown</span></div>
+              <div><span style="color:#5eead4">interface</span> <span style="color:#fcd34d">g0/0.10</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">encapsulation dot1Q</span> <span style="color:#fcd34d">10</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">ip address</span> <span style="color:#fcd34d">192.168.10.1 255.255.255.0</span></div>
+              <div><span style="color:#5eead4">interface</span> <span style="color:#fcd34d">g0/0.20</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">encapsulation dot1Q</span> <span style="color:#fcd34d">20</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">ip address</span> <span style="color:#fcd34d">192.168.20.1 255.255.255.0</span></div>
+            </div>
+          </div>
+          <div data-term style="border-radius:14px;overflow:hidden;border:1px solid #1e293b;box-shadow:0 16px 32px -20px rgba(15,23,42,.5)">
+            <div style="display:flex;align-items:center;gap:7px;padding:10px 14px;background:#111c30;border-bottom:1px solid #1e293b">
+              <span style="width:10px;height:10px;border-radius:50%;background:#ef4444"></span><span style="width:10px;height:10px;border-radius:50%;background:#f59e0b"></span><span style="width:10px;height:10px;border-radius:50%;background:#22c55e"></span>
+              <span style="margin-left:8px;font:600 12px 'JetBrains Mono',monospace;color:#94a3b8">R1 — DHCP</span>
+              <button onClick="{{ copyFrom }}" style="margin-left:auto;font:600 11px 'IBM Plex Sans';color:#94a3b8;background:#1e293b;border:none;padding:5px 11px;border-radius:7px;cursor:pointer">Copy</button>
+            </div>
+            <div style="margin:0;padding:16px 18px;font:500 13.5px/1.7 'JetBrains Mono',monospace;color:#e2e8f0;overflow-x:auto;background:#0b1220">
+              <div><span style="color:#5eead4">ip dhcp excluded-address</span> <span style="color:#fcd34d">192.168.10.1 192.168.10.10</span></div>
+              <div><span style="color:#5eead4">ip dhcp excluded-address</span> <span style="color:#fcd34d">192.168.20.1 192.168.20.10</span></div>
+              <div><span style="color:#5eead4">ip dhcp pool</span> <span style="color:#93c5fd">VLAN10</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">network</span> <span style="color:#fcd34d">192.168.10.0 255.255.255.0</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">default-router</span> <span style="color:#fcd34d">192.168.10.1</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">dns-server</span> <span style="color:#fcd34d">8.8.8.8</span></div>
+              <div><span style="color:#5eead4">ip dhcp pool</span> <span style="color:#93c5fd">VLAN20</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">network</span> <span style="color:#fcd34d">192.168.20.0 255.255.255.0</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">default-router</span> <span style="color:#fcd34d">192.168.20.1</span></div>
+              <div style="padding-left:18px"><span style="color:#5eead4">dns-server</span> <span style="color:#fcd34d">8.8.8.8</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STEP 5 ===== -->
+    <section style="margin-top:24px;background:#fff;border:1px solid #e2e8f0;border-radius:22px;padding:28px;box-shadow:0 14px 36px -26px rgba(15,23,42,.35);animation:fadeUp .5s ease both">
+      <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:22px">
+        <div style="flex:none;width:46px;height:46px;border-radius:14px;background:#b45309;color:#fff;display:flex;align-items:center;justify-content:center;font:700 20px 'Space Grotesk'">5</div>
+        <div>
+          <h3 style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Laptop nhận IP 💻</h3>
+          <p style="margin:5px 0 0;color:#64748b;font-size:14px">Trên mỗi laptop trong Packet Tracer: <b>Desktop → IP Configuration → DHCP</b>.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:start">
+        <div style="background:#f8fafc;border:1px solid #eef2f7;border-radius:16px;padding:14px">
+          <svg viewBox="0 0 380 230" width="100%" style="display:block;font-family:'IBM Plex Sans',sans-serif">
+            <line x1="100" y1="150" x2="190" y2="180" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="3 5"/>
+            <line x1="280" y1="150" x2="190" y2="180" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="3 5"/>
+            <circle r="4.5" fill="#2563eb"><animateMotion dur="2s" repeatCount="indefinite" path="M190,180 L100,150"/></circle>
+            <circle r="4.5" fill="#f59e0b"><animateMotion dur="2s" begin="1s" repeatCount="indefinite" path="M190,180 L280,150"/></circle>
+            <use href="#sym-laptop" x="55" y="20" width="88" height="66"/>
+            <use href="#sym-laptop" x="237" y="20" width="88" height="66"/>
+            <use href="#sym-router" x="160" y="172" width="58" height="58"/>
+            <g style="animation:pulseDot 1.8s ease-in-out infinite"><rect x="44" y="92" width="110" height="22" rx="7" fill="#2563eb"/><text x="99" y="107" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="'JetBrains Mono',monospace">192.168.10.x</text></g>
+            <g style="animation:pulseDot 1.8s ease-in-out infinite;animation-delay:.9s"><rect x="226" y="92" width="110" height="22" rx="7" fill="#f59e0b"/><text x="281" y="107" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="'JetBrains Mono',monospace">192.168.20.x</text></g>
+            <text x="189" y="224" text-anchor="middle" fill="#0e7490" font-size="11" font-weight="600">R1 · DHCP Server</text>
+          </svg>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="background:#0b1220;border:1px solid #1e293b;border-radius:14px;padding:18px 20px">
+            <div style="font:600 12px 'JetBrains Mono',monospace;color:#64748b;margin-bottom:10px;letter-spacing:.04em">PACKET TRACER · LAPTOP</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:#e2e8f0"><span style="width:22px;height:22px;border-radius:6px;background:#1e293b;color:#5eead4;display:flex;align-items:center;justify-content:center;font:700 12px 'JetBrains Mono'">1</span>Mở tab <b style="color:#fff">Desktop</b></div>
+              <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:#e2e8f0"><span style="width:22px;height:22px;border-radius:6px;background:#1e293b;color:#5eead4;display:flex;align-items:center;justify-content:center;font:700 12px 'JetBrains Mono'">2</span>Chọn <b style="color:#fff">IP Configuration</b></div>
+              <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:#e2e8f0"><span style="width:22px;height:22px;border-radius:6px;background:#1e293b;color:#5eead4;display:flex;align-items:center;justify-content:center;font:700 12px 'JetBrains Mono'">3</span>Tích chọn <b style="color:#5eead4">DHCP</b> → nhận IP tự động</div>
+            </div>
+          </div>
+          <sc-if value="{{ showExpected }}" hint-placeholder-val="{{ true }}">
+            <div style="border-radius:12px;background:#f0fdf4;border:1px solid #bbf7d0;padding:15px 17px">
+              <div style="display:flex;align-items:center;gap:8px;font-weight:600;color:#15803d;font-size:14px;margin-bottom:8px"><span>👉</span>Kết quả mong đợi</div>
+              <div style="display:flex;flex-direction:column;gap:6px;font-size:13.5px">
+                <div style="display:flex;align-items:center;gap:8px;color:#166534"><span style="width:9px;height:9px;border-radius:50%;background:#2563eb"></span>VLAN10 → IP <b style="font-family:'JetBrains Mono',monospace">192.168.10.x</b></div>
+                <div style="display:flex;align-items:center;gap:8px;color:#166534"><span style="width:9px;height:9px;border-radius:50%;background:#f59e0b"></span>VLAN20 → IP <b style="font-family:'JetBrains Mono',monospace">192.168.20.x</b></div>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STEP 6 ===== -->
+    <section style="margin-top:24px;background:#fff;border:1px solid #e2e8f0;border-radius:22px;padding:28px;box-shadow:0 14px 36px -26px rgba(15,23,42,.35);animation:fadeUp .5s ease both">
+      <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:22px">
+        <div style="flex:none;width:46px;height:46px;border-radius:14px;background:#0f172a;color:#fff;display:flex;align-items:center;justify-content:center;font:700 20px 'Space Grotesk'">6</div>
+        <div>
+          <h3 style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600">Verify 🔍 — Kiểm tra cấu hình</h3>
+          <p style="margin:5px 0 0;color:#64748b;font-size:14px">Dùng các lệnh <code style="font-family:'JetBrains Mono',monospace;background:#f1f5f9;padding:1px 6px;border-radius:5px">show</code> để xác nhận hệ thống hoạt động.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:start">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div data-term style="border-radius:14px;overflow:hidden;border:1px solid #1e293b;box-shadow:0 16px 32px -20px rgba(15,23,42,.5)">
+            <div style="display:flex;align-items:center;gap:7px;padding:10px 14px;background:#111c30;border-bottom:1px solid #1e293b">
+              <span style="width:10px;height:10px;border-radius:50%;background:#ef4444"></span><span style="width:10px;height:10px;border-radius:50%;background:#f59e0b"></span><span style="width:10px;height:10px;border-radius:50%;background:#22c55e"></span>
+              <span style="margin-left:8px;font:600 12px 'JetBrains Mono',monospace;color:#94a3b8">Trên Router</span>
+              <button onClick="{{ copyFrom }}" style="margin-left:auto;font:600 11px 'IBM Plex Sans';color:#94a3b8;background:#1e293b;border:none;padding:5px 11px;border-radius:7px;cursor:pointer">Copy</button>
+            </div>
+            <div style="margin:0;padding:16px 18px;font:500 13.5px/1.7 'JetBrains Mono',monospace;color:#e2e8f0;overflow-x:auto;background:#0b1220">
+              <div><span style="color:#5eead4">show ip dhcp binding</span></div>
+            </div>
+          </div>
+          <div data-term style="border-radius:14px;overflow:hidden;border:1px solid #1e293b;box-shadow:0 16px 32px -20px rgba(15,23,42,.5)">
+            <div style="display:flex;align-items:center;gap:7px;padding:10px 14px;background:#111c30;border-bottom:1px solid #1e293b">
+              <span style="width:10px;height:10px;border-radius:50%;background:#ef4444"></span><span style="width:10px;height:10px;border-radius:50%;background:#f59e0b"></span><span style="width:10px;height:10px;border-radius:50%;background:#22c55e"></span>
+              <span style="margin-left:8px;font:600 12px 'JetBrains Mono',monospace;color:#94a3b8">Trên Switch</span>
+              <button onClick="{{ copyFrom }}" style="margin-left:auto;font:600 11px 'IBM Plex Sans';color:#94a3b8;background:#1e293b;border:none;padding:5px 11px;border-radius:7px;cursor:pointer">Copy</button>
+            </div>
+            <div style="margin:0;padding:16px 18px;font:500 13.5px/1.7 'JetBrains Mono',monospace;color:#e2e8f0;overflow-x:auto;background:#0b1220">
+              <div><span style="color:#5eead4">show vlan brief</span></div>
+              <div><span style="color:#5eead4">show interfaces trunk</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="background:#f8fafc;border:1px solid #eef2f7;border-radius:16px;padding:18px">
+          <div style="font:600 12px 'JetBrains Mono',monospace;color:#64748b;margin-bottom:12px;letter-spacing:.04em">CHECKLIST</div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;align-items:center;gap:11px;font-size:14px;color:#334155"><span style="flex:none;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;display:flex;align-items:center;justify-content:center;font-weight:700">✓</span>Laptop xuất hiện trong bảng <b>dhcp binding</b></div>
+            <div style="display:flex;align-items:center;gap:11px;font-size:14px;color:#334155"><span style="flex:none;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;display:flex;align-items:center;justify-content:center;font-weight:700">✓</span>VLAN 10 &amp; 20 hiện đủ trên <b>cả hai switch</b></div>
+            <div style="display:flex;align-items:center;gap:11px;font-size:14px;color:#334155"><span style="flex:none;width:24px;height:24px;border-radius:50%;background:#dcfce7;color:#16a34a;display:flex;align-items:center;justify-content:center;font-weight:700">✓</span>Cổng fa0/1 &amp; fa0/24 ở trạng thái <b>trunking</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TEST ===== -->
+    <section style="margin-top:24px;border-radius:22px;padding:30px;background:linear-gradient(135deg,#0b1220,#13233f);box-shadow:0 20px 44px -26px rgba(15,23,42,.6);animation:fadeUp .5s ease both">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+        <span style="font-size:22px">🌐</span>
+        <h3 style="margin:0;font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;color:#fff">Test — Ping giữa 2 Laptop</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:center">
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px">
+          <svg viewBox="0 0 380 150" width="100%" style="display:block;font-family:'IBM Plex Sans',sans-serif">
+            <line x1="78" y1="70" x2="302" y2="70" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="4 5" stroke-linecap="round" style="animation:dashFlow 1s linear infinite"/>
+            <circle r="5" fill="#22c55e"><animateMotion dur="1.8s" repeatCount="indefinite" path="M78,70 L302,70"/></circle>
+            <circle r="5" fill="#38bdf8"><animateMotion dur="1.8s" begin=".9s" repeatCount="indefinite" path="M302,70 L78,70"/></circle>
+            <use href="#sym-laptop" x="34" y="34" width="88" height="66"/>
+            <use href="#sym-laptop" x="258" y="34" width="88" height="66"/>
+            <g><rect x="36" y="108" width="84" height="20" rx="7" fill="#2563eb"/><text x="78" y="122" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="600">VLAN10</text></g>
+            <g><rect x="260" y="108" width="84" height="20" rx="7" fill="#f59e0b"/><text x="302" y="122" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="600">VLAN20</text></g>
+            <text x="190" y="48" text-anchor="middle" fill="#7dd3fc" font-size="11" font-weight="600">ICMP echo ⇄ reply</text>
+          </svg>
+        </div>
+        <div>
+          <div data-term style="border-radius:14px;overflow:hidden;border:1px solid #1e293b;margin-bottom:16px">
+            <div style="margin:0;padding:16px 18px;font:500 13.5px/1.7 'JetBrains Mono',monospace;color:#e2e8f0;overflow-x:auto;background:#0b1220">
+              <div><span style="color:#64748b">C:\\&gt; </span><span style="color:#5eead4">ping</span> <span style="color:#fcd34d">192.168.20.x</span></div>
+              <div><span style="color:#22c55e">Reply from 192.168.20.x: bytes=32 time&lt;1ms</span></div>
+            </div>
+          </div>
+          <div style="display:flex;gap:11px;padding:15px 17px;border-radius:12px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3)">
+            <span style="font-size:18px">✅</span>
+            <p style="margin:0;font-size:14px;line-height:1.5;color:#bbf7d0">Nếu ping <b style="color:#fff">OK</b> → định tuyến <b style="color:#fff">Inter‑VLAN</b> qua Router‑on‑a‑Stick đã hoạt động.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div style="text-align:center;margin-top:36px;color:#94a3b8;font-size:13px">LAB: VTP + Router + DHCP · Cisco Packet Tracer</div>
+
+    <template id="__bundler_thumbnail" data-bg-color="#0b1220">
+      <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+        <rect width="1200" height="800" fill="#0b1220"/>
+        <rect x="300" y="250" width="180" height="80" rx="14" fill="#ffffff" stroke="#334155" stroke-width="4"/>
+        <rect x="720" y="250" width="180" height="80" rx="14" fill="#ffffff" stroke="#334155" stroke-width="4"/>
+        <circle cx="600" cy="540" r="64" fill="#ffffff" stroke="#334155" stroke-width="4"/>
+        <line x1="480" y1="290" x2="720" y2="290" stroke="#7c3aed" stroke-width="6" stroke-dasharray="6 12"/>
+        <line x1="390" y1="330" x2="560" y2="490" stroke="#7c3aed" stroke-width="6" stroke-dasharray="6 12"/>
+        <text x="600" y="160" text-anchor="middle" fill="#7dd3fc" font-family="monospace" font-size="44" font-weight="700">VTP · ROUTER · DHCP</text>
+      </svg>
+    </template>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1120, &quot;height&quot;: 1500 },
+  &quot;showNotes&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot; },
+  &quot;showExpected&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showNotes: this.props.showNotes ?? true,
+      showExpected: this.props.showExpected ?? true,
+      copyFrom: (e) => {
+        const b = e.currentTarget;
+        const term = b.closest('[data-term]');
+        if (!term) return;
+        const code = term.lastElementChild;
+        if (code && navigator.clipboard) navigator.clipboard.writeText(code.innerText);
+        const old = b.textContent;
+        b.textContent = '✓ Đã chép';
+        setTimeout(() => { b.textContent = old; }, 1400);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

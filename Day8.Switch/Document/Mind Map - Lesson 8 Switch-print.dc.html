@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;}
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  @media print {
+    @page { size: 1440px 3420px; margin: 0; }
+    html, body { width: 1440px; }
+    #mindmap-root { min-height: auto !important; width: 1440px !important; }
+    *, *::before, *::after {
+      animation-delay: -99s !important; animation-duration: .001s !important;
+      animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+      transition-duration: 0s !important;
+    }
+  }
+</style>
+</helmet>
+
+<div id="mindmap-root" style="min-height:100vh;background:linear-gradient(180deg,#F6F4EE 0%,#ECE9E1 100%);padding:56px 44px 80px;font-family:'Be Vietnam Pro',system-ui,sans-serif;color:#1E293B;">
+
+  <div style="display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:6px;">
+    <div style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#94A3B8;font-weight:700;">VTI Academy · Sơ đồ tư duy</div>
+    <div style="background:#16233B;color:#fff;padding:24px 46px;border-radius:20px;box-shadow:0 14px 40px rgba(15,23,42,.22);text-align:center;">
+      <div style="font-size:32px;font-weight:800;line-height:1.1;">Lesson 8 — Network: Switch</div>
+      <div style="font-size:15px;color:#A8B6CC;font-weight:500;margin-top:6px;">Switch cơ bản · VLAN · VTP · STP</div>
+    </div>
+    <div style="width:2px;height:42px;background:#CBD5E1;"></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(490px,1fr));gap:28px;max-width:1340px;margin:0 auto;align-items:start;">
+
+    <!-- BRANCH 1 -->
+    <div style="background:#fff;border-radius:18px;border:1px solid #E9E7E0;box-shadow:0 6px 28px rgba(15,23,42,.06);overflow:hidden;display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;gap:14px;padding:18px 24px;background:#2F6DB5;color:#fff;">
+        <div style="width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;">1</div>
+        <div style="font-size:20px;font-weight:800;">Switch & Quản trị cơ bản</div>
+      </div>
+      <div style="padding:22px 24px 26px;display:flex;flex-direction:column;gap:20px;">
+        <div style="border-radius:12px;overflow:hidden;border:1px solid #E6E4DD;background:#F8FAFC;">
+          <img src="images/switch-topology.png" alt="Mô hình sao kết nối Switch" style="display:block;width:100%;height:auto;"/>
+          <div style="font-size:11.5px;color:#94A3B8;padding:7px 12px;background:#fff;border-top:1px solid #EEF0F2;">Mô hình sao — Switch là thiết bị trung tâm kết nối mọi máy</div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;border-radius:50%;background:#2F6DB5;"></span><span style="font-weight:700;font-size:15.5px;color:#0F172A;">Định nghĩa</span></div>
+          <div style="margin-left:18px;border-left:2px solid #2F6DB533;padding-left:16px;margin-top:9px;display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Bộ chuyển mạch / thiết bị chuyển mạch</span></div>
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Kết nối các đoạn mạng theo mô hình sao (star)</span></div>
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Là thiết bị trung tâm — mọi máy đều nối về đây</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;border-radius:50%;background:#2F6DB5;"></span><span style="font-weight:700;font-size:15.5px;color:#0F172A;">Cấu tạo</span></div>
+          <div style="margin-left:18px;border-left:2px solid #2F6DB533;padding-left:16px;margin-top:9px;display:flex;flex-direction:column;gap:12px;">
+            <div style="border-radius:10px;overflow:hidden;border:1px solid #E6E4DD;background:#F8FAFC;">
+              <img src="images/switch-photo.png" alt="Switch Cisco Catalyst 24 cổng" style="display:block;width:100%;height:auto;"/>
+              <div style="font-size:11px;color:#94A3B8;padding:6px 11px;background:#fff;border-top:1px solid #EEF0F2;">Switch Cisco Catalyst 24 cổng — phần cứng thực tế</div>
+            </div>
+            <div>
+              <div style="font-size:14px;font-weight:600;color:#2F6DB5;margin-bottom:6px;">Phần cứng (hardware)</div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:13.5px;color:#475569;line-height:1.5;">Khung vỏ (nhựa/sắt), nguồn điện</span></div>
+                <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:13.5px;color:#475569;line-height:1.5;">CPU, bộ nhớ, bo mạch chủ, bus hệ thống</span></div>
+                <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:13.5px;color:#475569;line-height:1.5;">Cổng kết nối: 4 / 8 / 16 / 24 / 48 cổng</span></div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:14px;font-weight:600;color:#2F6DB5;margin-bottom:6px;">Phần mềm (software)</div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:13.5px;color:#475569;line-height:1.5;">Hệ điều hành (OS) điều khiển thiết bị — ví dụ Cisco IOS</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;border-radius:50%;background:#2F6DB5;"></span><span style="font-weight:700;font-size:15.5px;color:#0F172A;">Nhiệm vụ: chuyển mạch frame</span></div>
+          <div style="margin-left:18px;border-left:2px solid #2F6DB533;padding-left:16px;margin-top:9px;display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Frame vào 1 cổng → chuyển tiếp đến thiết bị nhận</span></div>
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Dựa vào bảng MAC (MAC Address Table)</span></div>
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Học & ghi địa chỉ MAC của host theo từng cổng</span></div>
+          </div>
+        </div>
+
+        <sc-if value="{{ showExamples }}" hint-placeholder-val="{{ true }}">
+          <div style="background:rgba(47,109,181,.07);border-left:3px solid #2F6DB5;border-radius:11px;padding:13px 15px;">
+            <div style="font-size:11px;letter-spacing:1.2px;font-weight:800;color:#2F6DB5;text-transform:uppercase;margin-bottom:8px;">Ví dụ minh hoạ</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:13.5px;color:#334155;line-height:1.5;">• PC-A (MAC <b>aa:aa:aa</b>) cắm vào cổng <b>Fa0/1</b>, gửi frame</div>
+              <div style="font-size:13.5px;color:#334155;line-height:1.5;">• Switch ghi <b>Fa0/1 ↔ aa:aa:aa</b> vào bảng MAC</div>
+              <div style="font-size:13.5px;color:#334155;line-height:1.5;">• Frame sau gửi tới aa:aa:aa → forward đúng cổng Fa0/1</div>
+            </div>
+            <div style="border-radius:9px;overflow:hidden;border:1px solid #D9E3F0;margin-top:10px;">
+              <img src="images/mac-table.png" alt="Lệnh show mac address-table" style="display:block;width:100%;height:auto;"/>
+            </div>
+            <div style="font-size:12.5px;color:#64748B;font-style:italic;margin-top:8px;line-height:1.5;">→ Switch tự học địa chỉ MAC để chuyển mạch chính xác (lệnh <span style="font-family:monospace;">show mac address-table</span>).</div>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+
+    <!-- BRANCH 2 -->
+    <div style="background:#fff;border-radius:18px;border:1px solid #E9E7E0;box-shadow:0 6px 28px rgba(15,23,42,.06);overflow:hidden;display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;gap:14px;padding:18px 24px;background:#1F9D74;color:#fff;">
+        <div style="width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;">2</div>
+        <div style="font-size:20px;font-weight:800;">VLAN — Virtual LAN (mạng LAN ảo)</div>
+      </div>
+      <div style="padding:22px 24px 26px;display:flex;flex-direction:column;gap:20px;">
+        <div style="border-radius:12px;overflow:hidden;border:1px solid #E6E4DD;background:#F8FAFC;">
+          <img src="images/vlan-diagram.png" alt="Phân chia VLAN theo phòng ban" style="display:block;width:100%;height:auto;"/>
+          <div style="font-size:11.5px;color:#94A3B8;padding:7px 12px;background:#fff;border-top:1px solid #EEF0F2;">VLAN 2/3/4 cho IT, HR, Sales — tách logic dù dùng chung hạ tầng</div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;border-radius:50%;background:#1F9D74;"></span><span style="font-weight:700;font-size:15.5px;color:#0F172A;">Khái niệm</span></div>
+          <div style="margin-left:18px;border-left:2px solid #1F9D7433;padding-left:16px;margin-top:9px;display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Chia mạng LAN vật lý thành nhiều mạng logic riêng biệt</span></div>
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Mỗi mạng logic = 1 VLAN</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;border-radius:50%;background:#1F9D74;"></span><span style="font-weight:700;font-size:15.5px;color:#0F172A;">Lợi ích</span></div>
+          <div style="margin-left:18px;border-left:2px solid #1F9D7433;padding-left:16px;margin-top:9px;display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Tăng bảo mật — cô lập lưu lượng</span></div>
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Giảm miền quảng bá (broadcast domain)</span></div>
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Linh hoạt — không phụ thuộc vị trí vật lý</span></div>
+          </div>
+        </div>
+
+        <sc-if value="{{ showExamples }}" hint-placeholder-val="{{ true }}">
+          <div style="background:rgba(31,157,116,.08);border-left:3px solid #1F9D74;border-radius:11px;padding:13px 15px;">
+            <div style="font-size:11px;letter-spacing:1.2px;font-weight:800;color:#1F9D74;text-transform:uppercase;margin-bottom:8px;">Ví dụ minh hoạ</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:13.5px;color:#334155;line-height:1.5;">• <b>VLAN 10</b> = Phòng Kế toán</div>
+              <div style="font-size:13.5px;color:#334155;line-height:1.5;">• <b>VLAN 20</b> = Phòng Kỹ thuật</div>
+              <div style="font-size:13.5px;color:#334155;line-height:1.5;">• Cùng cắm 1 switch nhưng 2 VLAN không thấy nhau</div>
+            </div>
+            <div style="font-size:12.5px;color:#64748B;font-style:italic;margin-top:8px;line-height:1.5;">→ Dùng chung phần cứng nhưng bị cô lập như 2 mạng riêng.</div>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+
+    <!-- BRANCH 3 -->
+    <div style="background:#fff;border-radius:18px;border:1px solid #E9E7E0;box-shadow:0 6px 28px rgba(15,23,42,.06);overflow:hidden;display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;gap:14px;padding:18px 24px;background:#E0892B;color:#fff;">
+        <div style="width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;">3</div>
+        <div style="font-size:20px;font-weight:800;">VTP — VLAN Trunking Protocol</div>
+      </div>
+      <div style="padding:22px 24px 26px;display:flex;flex-direction:column;gap:20px;">
+        <div style="border-radius:12px;overflow:hidden;border:1px solid #E6E4DD;background:#F8FAFC;">
+          <img src="images/vtp-diagram.png" alt="VTP Server đồng bộ tới các VTP Client" style="display:block;width:100%;height:auto;"/>
+          <div style="font-size:11.5px;color:#94A3B8;padding:7px 12px;background:#fff;border-top:1px solid #EEF0F2;">VTP Server đồng bộ thông tin VLAN xuống các VTP Client</div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;border-radius:50%;background:#E0892B;"></span><span style="font-weight:700;font-size:15.5px;color:#0F172A;">Khái niệm</span></div>
+          <div style="margin-left:18px;border-left:2px solid #E0892B33;padding-left:16px;margin-top:9px;display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Giao thức tầng liên kết dữ liệu (Layer 2 — OSI)</span></div>
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Tự động cấu hình & đồng bộ thông tin VLAN giữa các switch</span></div>
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Truyền thông tin VLAN qua đường Trunk</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;border-radius:50%;background:#E0892B;"></span><span style="font-weight:700;font-size:15.5px;color:#0F172A;">Cơ chế hoạt động</span></div>
+          <div style="margin-left:18px;border-left:2px solid #E0892B33;padding-left:16px;margin-top:9px;display:flex;flex-direction:column;gap:12px;">
+            <div>
+              <div style="font-size:14px;font-weight:600;color:#E0892B;margin-bottom:6px;">3 chế độ VTP</div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:13.5px;color:#475569;line-height:1.5;"><b>Server</b> — chứa & thay đổi cấu hình VLAN</span></div>
+                <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:13.5px;color:#475569;line-height:1.5;"><b>Client</b> — lắng nghe & áp dụng từ Server</span></div>
+                <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:13.5px;color:#475569;line-height:1.5;"><b>Transparent</b> — không truyền, chỉ chuyển tiếp</span></div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:13.5px;color:#475569;line-height:1.5;">Thông tin VLAN: tên, số hiệu, tham số</span></div>
+              <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:13.5px;color:#475569;line-height:1.5;"><b>Revision Number</b> — số phiên bản theo dõi thay đổi; bản mới hơn → Client cập nhật</span></div>
+              <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:13.5px;color:#475569;line-height:1.5;">Gửi/nhận qua Ethernet frames trên trunk</span></div>
+            </div>
+          </div>
+        </div>
+
+        <sc-if value="{{ showCli }}" hint-placeholder-val="{{ true }}">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;"><span style="width:9px;height:9px;border-radius:50%;background:#E0892B;"></span><span style="font-weight:700;font-size:15.5px;color:#0F172A;">Cấu hình (lệnh CLI)</span></div>
+          <div style="background:#16233B;border-radius:11px;padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.7;color:#E2E8F0;overflow-x:auto;">
+            <div><span style="color:#7C8BA5;">switch(config)#</span> vtp mode &lt;server/client/transparent&gt;</div>
+            <div><span style="color:#7C8BA5;">switch(config)#</span> vtp domain &lt;tên-domain&gt;</div>
+            <div><span style="color:#7C8BA5;">switch(config)#</span> vtp password &lt;mật-khẩu&gt;</div>
+            <div><span style="color:#7C8BA5;">switch(config-if)#</span> switchport mode trunk</div>
+            <div><span style="color:#7C8BA5;">switch(config-if)#</span> switchport trunk encapsulation dot1q</div>
+            <div><span style="color:#7C8BA5;">switch(config-if)#</span> switchport trunk allowed vlan all</div>
+            <div><span style="color:#7C8BA5;">switch#</span> show vtp status</div>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ showExamples }}" hint-placeholder-val="{{ true }}">
+          <div style="background:rgba(224,137,43,.09);border-left:3px solid #E0892B;border-radius:11px;padding:13px 15px;">
+            <div style="font-size:11px;letter-spacing:1.2px;font-weight:800;color:#C77518;text-transform:uppercase;margin-bottom:8px;">Ví dụ minh hoạ</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:13.5px;color:#334155;line-height:1.5;">• <b>SW1 (Server)</b> tạo mới VLAN 30 → revision number tăng</div>
+              <div style="font-size:13.5px;color:#334155;line-height:1.5;">• <b>SW2, SW3 (Client)</b> nhận qua trunk → tự thêm VLAN 30</div>
+            </div>
+            <div style="font-size:12.5px;color:#64748B;font-style:italic;margin-top:8px;line-height:1.5;">→ Cấu hình 1 lần trên Server, các Client tự đồng bộ.</div>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+
+    <!-- BRANCH 4 -->
+    <div style="background:#fff;border-radius:18px;border:1px solid #E9E7E0;box-shadow:0 6px 28px rgba(15,23,42,.06);overflow:hidden;display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;gap:14px;padding:18px 24px;background:#B5453B;color:#fff;">
+        <div style="width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;">4</div>
+        <div style="font-size:20px;font-weight:800;">STP — Spanning Tree Protocol</div>
+      </div>
+      <div style="padding:22px 24px 26px;display:flex;flex-direction:column;gap:20px;">
+        <div style="border-radius:12px;overflow:hidden;border:1px solid #E6E4DD;background:#F8FAFC;">
+          <img src="images/stp-diagram.png" alt="STP chặn 1 cổng để cắt vòng lặp" style="display:block;width:100%;height:auto;"/>
+          <div style="font-size:11.5px;color:#94A3B8;padding:7px 12px;background:#fff;border-top:1px solid #EEF0F2;">STP block cổng Gi0/2 trên SW3 để phá vòng lặp giữa 3 switch</div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;border-radius:50%;background:#B5453B;"></span><span style="font-weight:700;font-size:15.5px;color:#0F172A;">Mục đích & nguyên nhân</span></div>
+          <div style="margin-left:18px;border-left:2px solid #B5453B33;padding-left:16px;margin-top:9px;display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Ngăn chặn <b>vòng lặp (loop)</b> trong mạng LAN</span></div>
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Vòng lặp sinh ra khi có nhiều đường cáp dự phòng giữa Switch/Bridge</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;border-radius:50%;background:#B5453B;"></span><span style="font-weight:700;font-size:15.5px;color:#0F172A;">Hậu quả nếu không kiểm soát</span></div>
+          <div style="margin-left:18px;border-left:2px solid #B5453B33;padding-left:16px;margin-top:9px;display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Broadcast Storms (bão quảng bá)</span></div>
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Nhân bản gói tin · giảm hiệu suất mạng</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;"><span style="width:9px;height:9px;border-radius:50%;background:#B5453B;"></span><span style="font-weight:700;font-size:15.5px;color:#0F172A;">Cơ chế</span></div>
+          <div style="margin-left:18px;border-left:2px solid #B5453B33;padding-left:16px;margin-top:9px;display:flex;flex-direction:column;gap:7px;">
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Chặn (block) cổng dư thừa → tạo cây không vòng lặp</span></div>
+            <div style="display:flex;gap:9px;"><span style="width:5px;height:5px;border-radius:50%;background:#CBD5E1;margin-top:8px;flex:none;"></span><span style="font-size:14px;color:#475569;line-height:1.5;">Tự kích hoạt lại đường dự phòng khi đường chính lỗi</span></div>
+          </div>
+        </div>
+
+        <sc-if value="{{ showExamples }}" hint-placeholder-val="{{ true }}">
+          <div style="background:rgba(181,69,59,.08);border-left:3px solid #B5453B;border-radius:11px;padding:13px 15px;">
+            <div style="font-size:11px;letter-spacing:1.2px;font-weight:800;color:#B5453B;text-transform:uppercase;margin-bottom:8px;">Ví dụ minh hoạ</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="font-size:13.5px;color:#334155;line-height:1.5;">• 3 switch nối vòng tam giác <b>A–B–C–A</b></div>
+              <div style="font-size:13.5px;color:#334155;line-height:1.5;">• STP block 1 cổng để cắt vòng lặp</div>
+              <div style="font-size:13.5px;color:#334155;line-height:1.5;">• Đường A–B hỏng → STP mở lại cổng đã block</div>
+            </div>
+            <div style="font-size:12.5px;color:#64748B;font-style:italic;margin-top:8px;line-height:1.5;">→ Giữ 1 đường hoạt động, đường còn lại làm dự phòng.</div>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div style="max-width:1340px;margin:34px auto 0;text-align:center;font-size:12.5px;color:#94A3B8;">
+    Nguồn: Lesson 8 — Network: Switch · VTI Academy · File <b>.xmind</b> đính kèm để mở bằng ứng dụng XMind.
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1360,&quot;height&quot;:900},&quot;showExamples&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showCli&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showExamples: this.props.showExamples ?? true,
+      showCli: this.props.showCli ?? true,
+    };
+  }
+}
+</script>
+<script>
+addEventListener('load', () => {
+  (async () => {
+    try { await document.fonts.ready; } catch (e) {}
+    // wait for DC to mount its content
+    const start = Date.now();
+    while (!document.querySelector('#mindmap-root') && Date.now() - start < 8000) {
+      await new Promise(r => setTimeout(r, 100));
+    }
+    const imgs = Array.from(document.images).filter((i) => !i.complete);
+    await Promise.race([
+      Promise.allSettled(imgs.map((i) => i.decode())),
+      new Promise((r) => setTimeout(r, 8000)),
+    ]);
+    setTimeout(() => window.print(), 600);
+  })();
+});
+</script>
+</body>
+</html>
