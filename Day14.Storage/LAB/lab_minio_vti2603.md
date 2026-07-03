@@ -63,7 +63,7 @@ sudo systemctl status minio
 ## Check permission
 ```bash
 
-chown -R minio-user:minio-user /mnt/minio_data
+chown -R minio-user:minio-user /mnt/minio-data
 find /mnt/minio_data -type d -exec chmod 755 {} \;
 find /mnt/minio_data -type f -exec chmod 644 {} \;
 
