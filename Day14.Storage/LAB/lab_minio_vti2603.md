@@ -19,7 +19,7 @@ sudo mkdir -p /mnt/minio-data
 sudo chown minio-user:minio-user /mnt/minio-data
 
 # Tải binary
-curl -O https://dl.min.io/server/minio/release/linux-amd64/minio
+curl -LO https://dl.min.io/server/minio/release/linux-amd64/minio
 chmod +x minio
 sudo mv minio /usr/local/bin/
 ```
@@ -64,8 +64,8 @@ sudo systemctl status minio
 ```bash
 
 chown -R minio-user:minio-user /mnt/minio-data
-find /mnt/minio_data -type d -exec chmod 755 {} \;
-find /mnt/minio_data -type f -exec chmod 644 {} \;
+find /mnt/minio-data -type d -exec chmod 755 {} \;
+find /mnt/minio-data -type f -exec chmod 644 {} \;
 
 ```
 
