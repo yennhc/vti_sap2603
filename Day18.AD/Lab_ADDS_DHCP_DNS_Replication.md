@@ -157,6 +157,11 @@ Get-DhcpServerv4Scope
 
 ## PHẦN 2 — DC-02: Additional Domain Controller (replicate AD/DNS + DHCP Failover)
 
+```bash
+#Reset machine ID
+%WINDIR%\system32\sysprep\sysprep.exe /generalize /oobe /shutdown
+```
+
 ### 2.1. Cấu hình IP tĩnh (trỏ DNS về DC-01 để có thể join domain)
 
 **CLI:**
